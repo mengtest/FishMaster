@@ -38,13 +38,20 @@ public class FishMaker : MonoBehaviour {
 
         if (moveType==0)
         {
-            //TUDO 直走鱼群的生成
             angOffset = Random.Range(-22, 22);
             StartCoroutine( GenStraightFish(genPosIndex, fishPreIndex, fishNum, fishSpeed, angOffset));
         }
         else
         {
-            //TUDO 转弯鱼的生产
+            if (Random.Range(0,2)==0)
+            {
+                angSpeed = Random.Range(-15, -9);
+            }
+            else
+            {
+                angSpeed = Random.Range(9, 15);
+            }
+            StartCoroutine(GenTrunFish(genPosIndex, fishPreIndex, fishNum, fishSpeed, angSpeed));
         }
     }
 
@@ -63,6 +70,25 @@ public class FishMaker : MonoBehaviour {
             fish.transform.Rotate(0, 0, angOffset);
             fish.GetComponent<SpriteRenderer>().sortingOrder += i;
             fish.AddComponent<EF_AutoMove>().speed = fishSpeed;
+            yield return new WaitForSeconds(fish.GetComponent<FishAttr>().fishGenWaitTiem);
+        }
+    }
+
+    IEnumerator GenTrunFish(int genPosIndex, int fishPreIndex, int fishNum, int fishSpeed, int angSpeed)
+    {
+        for (int i = 0; i < fishNum; i++)
+        {
+            if (i == 0)
+            {
+                yield return new WaitForSeconds(fishPrefabs[fishPreIndex].GetComponent<FishAttr>().fishGenWaitTiem);
+            }
+            GameObject fish = Instantiate(fishPrefabs[fishPreIndex]);
+            fish.transform.SetParent(fishHolder, false);
+            fish.transform.localPosition = genPositions[genPosIndex].localPosition;
+            fish.transform.localRotation = genPositions[genPosIndex].localRotation;
+            fish.GetComponent<SpriteRenderer>().sortingOrder += i;
+            fish.AddComponent<EF_AutoMove>().speed = fishSpeed;
+            fish.AddComponent<EF_AutoRotate>().speed = angSpeed;
             yield return new WaitForSeconds(fish.GetComponent<FishAttr>().fishGenWaitTiem);
         }
     }
