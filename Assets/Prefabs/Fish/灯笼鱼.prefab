@@ -117,6 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf3f4853011ce348a161301a50bef78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 3000
+  exp: 50
+  Gold: 500
+  diePrefab: {fileID: 1467639509351590, guid: a8b82767f02909f4ab07723340655290, type: 2}
   maxNum: 6
   maxSpeed: 5
   fishGenWaitTiem: 0.6
