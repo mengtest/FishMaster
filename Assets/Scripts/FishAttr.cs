@@ -33,6 +33,7 @@ public class FishAttr : MonoBehaviour {
             die.transform.position = transform.position;
             die.transform.rotation = transform.rotation;
             Destroy(gameObject);
+            GameController.instance.AddExpAndGold(exp, Gold);
             Destroy(die, 0.5f);
         }
     }
