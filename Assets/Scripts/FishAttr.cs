@@ -5,10 +5,15 @@ using UnityEngine;
 public class FishAttr : MonoBehaviour {
     [SerializeField]
     private float hp;
+    [SerializeField]
+    private int exp;
+    [SerializeField]
+    private int Gold;
+    [SerializeField]
+    private GameObject diePrefab;
     public int maxNum;
     public int maxSpeed;
-    [SerializeField]
-    private GameObject diePrefab; 
+    
     public float fishGenWaitTiem = 0.5f;//每条鱼生产的间隔
 
     private void OnTriggerEnter2D(Collider2D collision)
