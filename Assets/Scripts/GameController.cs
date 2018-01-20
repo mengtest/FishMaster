@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    public static GameController instance;
     public GameObject[] gunGos;
     private int costIndex = 0;
     
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour {
 
     private void Awake()
     {
+        instance = this;
         goldText = GameObject.Find("GoldNumText").GetComponent<Text>();
         lvText = GameObject.Find("LvText").GetComponent<Text>();
         lvNameText = GameObject.Find("LvNameText").GetComponent<Text>();
@@ -53,13 +55,17 @@ public class GameController : MonoBehaviour {
         bigCountdownButton = GameObject.Find("RewarButton").GetComponent<Button>();
         backButton = GameObject.Find("BackButton").GetComponent<Button>();
         settingButton = GameObject.Find("SettingButton").GetComponent<Button>();
-        expSlider = GameObject.Find("LvNameText").GetComponent<Slider>();
+        expSlider = GameObject.Find("ExpSlider").GetComponent<Slider>();
+        bigCountdownButton.onClick.AddListener(UpdateBigCountDownTime);
     }
-
+    public void AddExpAndGold(int newExp,int newGold)
+    {
+        exp += newExp;
+        gold += newGold;
+    }
 	void Start () {
         oneShootCostText = GameObject.Find("oneShootCostText").GetComponent<Text>();
         bulletHolder = GameObject.Find("bulletHolder").transform;
-        UpdateUI();
     }
 	
     void Fire()
@@ -84,12 +90,22 @@ public class GameController : MonoBehaviour {
             bullet.AddComponent<EF_AutoMove>().dir = Vector3.up;
             bullet.GetComponent<EF_AutoMove>().speed = bullet.GetComponent<BulletAttr>().speed;
             bullet.GetComponent<BulletAttr>().damage *= oneShootCosts[costIndex];
+            if (gold>= oneShootCosts[costIndex])
+            {
+                gold -= oneShootCosts[costIndex];
+            }
+            else
+            {
+
+            }
+            
         }
     }
 	void Update () {
         ChangeBulletCost();
         Fire();
-	}
+        UpdateUI();
+    }
 
     void ChangeBulletCost()
     {
@@ -121,10 +137,54 @@ public class GameController : MonoBehaviour {
     }
     void UpdateUI()
     {
-        goldText.text = gold.ToString();
+        //exp += 10;
+        bigTimer -= Time.deltaTime;
+        smallTimer -= Time.deltaTime;
+        if (smallTimer<=0)
+        {
+            smallTimer = smallCountdown;
+            gold += 50;
+        }
+        else
+        {
+           smallCountdownText.text = ((int)smallTimer).ToString();
+        }
+        if (bigTimer<=0)
+        {
+            bigCountdownText.text = "";
+            bigCountdownButton.transform.GetComponent<CanvasGroup>().alpha = 1;
+            bigCountdownButton.interactable = true;
+        }
+        else
+        {
+            bigCountdownButton.transform.GetComponent<CanvasGroup>().alpha = 0;
+            bigCountdownButton.interactable = false;
+            bigCountdownText.text = (int)bigTimer + "S";
+        }
+        while (exp>=1000+200*lv)
+        {
+            lv++;
+            exp = 0;
+        }
+        if (lv/10<=9)
+        {
+            lvNameText.text = lvNames[lv / 10].ToString();
+        }
+        else
+        {
+            lvNameText.text = lvNames[9].ToString();
+        }
+        if (lv>99&&lv<=999)
+        {
+            lvText.fontSize = 27;
+        }
+        goldText.text = "$" +  gold;
         lvText.text = lv.ToString(); 
-        lvNameText.text = lvNames[lv/10].ToString();
-        smallCountdownText.text = smallCountdown.ToString();
-        bigCountdownText.text = bigCountdown.ToString() ;
+        expSlider.value = (float)exp / (1000 + lv * 200);
+    }
+    private void UpdateBigCountDownTime()
+    {
+        bigTimer = bigCountdown;
+        gold += 500;
     }
 }
