@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FishAttr : MonoBehaviour {
-
+    [SerializeField]
+    private float hp;
     public int maxNum;
     public int maxSpeed;
+    [SerializeField]
+    private GameObject diePrefab; 
     public float fishGenWaitTiem = 0.5f;//每条鱼生产的间隔
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -13,6 +16,19 @@ public class FishAttr : MonoBehaviour {
         if (collision.tag=="Border")
         {
             Destroy(gameObject);
+        }
+    }
+    public void TakeDamage(float value)
+    {
+        hp -= value;
+        if (hp<=0)
+        {
+            GameObject die = Instantiate(diePrefab);
+            die.transform.SetParent(transform.parent, false);
+            die.transform.position = transform.position;
+            die.transform.rotation = transform.rotation;
+            Destroy(gameObject);
+            Destroy(die, 0.5f);
         }
     }
 }
