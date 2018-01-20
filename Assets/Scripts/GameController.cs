@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -31,7 +32,7 @@ public class GameController : MonoBehaviour {
     {
         GameObject[] useBullets = bullet1Gos;
         int bulletIndex;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&EventSystem.current.IsPointerOverGameObject()==false)
         {
             switch (costIndex / 4)
             {
