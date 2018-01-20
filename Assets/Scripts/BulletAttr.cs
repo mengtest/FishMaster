@@ -5,5 +5,5 @@ using UnityEngine;
 public class BulletAttr : MonoBehaviour {
 
     public int speed;
-    public int damage;
+    public float damage;
 }

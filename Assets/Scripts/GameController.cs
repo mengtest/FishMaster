@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour {
             bullet.transform.rotation = gunGos[costIndex / 4].transform.rotation;
             bullet.AddComponent<EF_AutoMove>().dir = Vector3.up;
             bullet.GetComponent<EF_AutoMove>().speed =10f;
-
+            bullet.GetComponent<BulletAttr>().damage *= oneShootCosts[costIndex];
         }
     }
 	void Update () {
