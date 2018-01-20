@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNum: 7
   maxSpeed: 6
+  fishGenWaitTiem: 0.3
 --- !u!212 &212190630170121374
 SpriteRenderer:
   m_ObjectHideFlags: 1

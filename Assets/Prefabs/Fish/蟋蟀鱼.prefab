@@ -117,8 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf3f4853011ce348a161301a50bef78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNum: 3
+  maxNum: 10
   maxSpeed: 4
+  fishGenWaitTiem: 0.4
 --- !u!212 &212441721228365420
 SpriteRenderer:
   m_ObjectHideFlags: 1
