@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212983084668702372}
   - component: {fileID: 95707338181497978}
   - component: {fileID: 61731842413301646}
+  - component: {fileID: 114620541356207538}
   m_Layer: 0
   m_Name: p32
   m_TagString: Untagged
@@ -84,6 +85,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114620541356207538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309925247025222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6e7f1dc50bf314e8a50abd0d45ce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 25
+  damage: 4.2
 --- !u!212 &212983084668702372
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212490691560161572}
   - component: {fileID: 95946849679469580}
   - component: {fileID: 61216293378050932}
+  - component: {fileID: 114741002612070156}
   m_Layer: 0
   m_Name: p26
   m_TagString: Untagged
@@ -84,6 +85,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114741002612070156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674217240978948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6e7f1dc50bf314e8a50abd0d45ce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  damage: 3.6
 --- !u!212 &212490691560161572
 SpriteRenderer:
   m_ObjectHideFlags: 1

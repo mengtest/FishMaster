@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212655604229807944}
   - component: {fileID: 95351796896924794}
   - component: {fileID: 61151169396591178}
+  - component: {fileID: 114973515107549842}
   m_Layer: 0
   m_Name: p15
   m_TagString: Untagged
@@ -84,6 +85,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114973515107549842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152614113865172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6e7f1dc50bf314e8a50abd0d45ce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  damage: 2.5
 --- !u!212 &212655604229807944
 SpriteRenderer:
   m_ObjectHideFlags: 1
