@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95443287459202288}
   - component: {fileID: 61516082445062226}
   - component: {fileID: 50212494031788284}
-  - component: {fileID: 114340695598500192}
+  - component: {fileID: 114653037867719138}
   m_Layer: 0
   m_Name: "\u91D1\u9CA8"
   m_TagString: Fish
@@ -106,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114340695598500192
+--- !u!114 &114653037867719138
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,12 +114,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1030444964345652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b28514c0c74e1745bb432eafc0385fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bf3f4853011ce348a161301a50bef78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabs:
-  - {fileID: 100000, guid: bee81473e03b09c4aaf620cba1e126da, type: 2}
-  - {fileID: 100000, guid: af22026c40f4a8b41aaaf61314767f99, type: 2}
+  maxNum: 1
+  maxSpeed: 5
 --- !u!212 &212466191483243150
 SpriteRenderer:
   m_ObjectHideFlags: 1
