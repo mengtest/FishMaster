@@ -31,10 +31,12 @@ public class GameController : MonoBehaviour {
     private Button backButton;
     private Button settingButton;
     private Slider expSlider;
+    private Color goldTextColor;
 
     [SerializeField]
     private int lv = 0;
     private int exp = 0;
+    [SerializeField]
     private int gold = 500;
     private const int bigCountdown = 240;
     private const int smallCountdown = 60;
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour {
         instance = this;
         goldText = GameObject.Find("GoldNumText").GetComponent<Text>();
         lvText = GameObject.Find("LvText").GetComponent<Text>();
+        goldTextColor = goldText.color;
         lvNameText = GameObject.Find("LvNameText").GetComponent<Text>();
         smallCountdownText = GameObject.Find("SmallCountdown").GetComponent<Text>();
         bigCountdownText = GameObject.Find("BigCountdown").GetComponent<Text>();
@@ -81,23 +84,25 @@ public class GameController : MonoBehaviour {
                 case 2: useBullets = bullet3Gos; break;
                 case 3:useBullets = bullet4Gos;break;
             }
-     
-            bulletIndex = (lv / 10 >= 9) ? 9 : lv / 10; 
-            GameObject bullet  = Instantiate(useBullets[bulletIndex]);
-            bullet.transform.SetParent(bulletHolder, false);
-            bullet.transform.position = gunGos[costIndex / 4].transform.Find("FirePos").transform.position;
-            bullet.transform.rotation = gunGos[costIndex / 4].transform.rotation;
-            bullet.AddComponent<EF_AutoMove>().dir = Vector3.up;
-            bullet.GetComponent<EF_AutoMove>().speed = bullet.GetComponent<BulletAttr>().speed;
-            bullet.GetComponent<BulletAttr>().damage *= oneShootCosts[costIndex];
-            if (gold>= oneShootCosts[costIndex])
+            
+            bulletIndex = (lv / 10 >= 9) ? 9 : lv / 10;
+            if (gold >= oneShootCosts[costIndex])
             {
                 gold -= oneShootCosts[costIndex];
+                GameObject bullet = Instantiate(useBullets[bulletIndex]);
+                bullet.transform.SetParent(bulletHolder, false);
+                bullet.transform.position = gunGos[costIndex / 4].transform.Find("FirePos").transform.position;
+                bullet.transform.rotation = gunGos[costIndex / 4].transform.rotation;
+                bullet.AddComponent<EF_AutoMove>().dir = Vector3.up;
+                bullet.GetComponent<EF_AutoMove>().speed = bullet.GetComponent<BulletAttr>().speed;
+                bullet.GetComponent<BulletAttr>().damage *= oneShootCosts[costIndex];
             }
             else
             {
-
+                StartCoroutine(GoldNotEnough());
             }
+            
+            
             
         }
     }
@@ -186,5 +191,11 @@ public class GameController : MonoBehaviour {
     {
         bigTimer = bigCountdown;
         gold += 500;
+    }
+    IEnumerator GoldNotEnough()
+    {
+        goldText.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        goldText.color = goldTextColor;
     }
 }
