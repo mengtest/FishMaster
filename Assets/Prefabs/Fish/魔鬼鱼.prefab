@@ -121,6 +121,7 @@ MonoBehaviour:
   exp: 80
   Gold: 800
   diePrefab: {fileID: 1536102446404294, guid: e7695d4de230e514f80d0081c2f30d45, type: 2}
+  goldPrefab: {fileID: 1373307516585474, guid: 454e4783ed584264f8dc96f023a35bbf, type: 2}
   maxNum: 3
   maxSpeed: 4
   fishGenWaitTiem: 0.8
