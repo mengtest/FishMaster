@@ -1064,8 +1064,9 @@ GameObject:
   - component: {fileID: 1924206788}
   - component: {fileID: 1924206787}
   - component: {fileID: 1924206786}
+  - component: {fileID: 1924206789}
   m_Layer: 5
-  m_Name: OldGame
+  m_Name: LoadGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1164,6 +1165,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1924206784}
+--- !u!114 &1924206789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924206784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a307705702cf44683fcf2b6691cac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2106712530 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ed85fee4b3a267f49914c3d07c7ab0e2, type: 2}
