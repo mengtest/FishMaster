@@ -106,6 +106,7 @@ public class GameController : MonoBehaviour {
                 bullet.AddComponent<EF_AutoMove>().dir = Vector3.up;
                 bullet.GetComponent<EF_AutoMove>().speed = bullet.GetComponent<BulletAttr>().speed;
                 bullet.GetComponent<BulletAttr>().damage *= oneShootCosts[costIndex];
+                gunGos[costIndex / 4].GetComponent<AudioSource>().Play();
             }
             else
             {

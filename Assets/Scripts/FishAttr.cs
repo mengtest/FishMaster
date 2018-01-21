@@ -34,12 +34,19 @@ public class FishAttr : MonoBehaviour {
             die.transform.SetParent(transform.parent, false);
             die.transform.position = transform.position;
             die.transform.rotation = transform.rotation;
-
+            if (Random.Range(0,10)==0)
+            {
+                if (die.GetComponent<AudioSource>() != null)
+                {
+                    die.GetComponent<AudioSource>().Play();
+                }
+            }
             GameObject gold = Instantiate(goldPrefab);
             gold.transform.SetParent(transform.parent, false);
             gold.transform.position = transform.position;
             gold.transform.rotation = transform.rotation;
-            gold.AddComponent<EF_MoveTo>().moveSpeed = 10f;
+            gold.AddComponent<EF_MoveTo>().moveSpeed = 3f;
+            gold.GetComponent<AudioSource>().Play();
 
             Destroy(gameObject);
             GameController.instance.AddExpAndGold(exp, Gold);
