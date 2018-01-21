@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -60,7 +61,16 @@ public class GameController : MonoBehaviour {
         settingButton = GameObject.Find("SettingButton").GetComponent<Button>();
         expSlider = GameObject.Find("ExpSlider").GetComponent<Slider>();
         bigCountdownButton.onClick.AddListener(UpdateBigCountDownTime);
+        LoadgameData();
     }
+
+    private void LoadgameData()
+    {
+        lv = PlayerPrefs.GetInt("Lv");
+        exp = PlayerPrefs.GetInt("Exp");
+        gold = PlayerPrefs.GetInt("Gold");
+    }
+
     public void AddExpAndGold(int newExp,int newGold)
     {
         exp += newExp;
@@ -110,6 +120,10 @@ public class GameController : MonoBehaviour {
         ChangeBulletCost();
         Fire();
         UpdateUI();
+        PlayerPrefs.SetInt("Lv", lv);
+        PlayerPrefs.SetInt("Gold", gold);
+        PlayerPrefs.SetInt("Exp", exp);
+
     }
 
     void ChangeBulletCost()
