@@ -101,16 +101,16 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e0a202697a8fd7f4d9d70ce913aab552, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: -2.18
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 153
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.65
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
