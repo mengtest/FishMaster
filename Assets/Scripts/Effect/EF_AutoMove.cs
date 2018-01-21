@@ -14,11 +14,5 @@ public class EF_AutoMove : MonoBehaviour {
 	void Update () {
         transform.Translate(dir * speed * Time.deltaTime);
 	}
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Border")
-        {
-            Destroy(gameObject);
-        }
-    }
+   
 }
